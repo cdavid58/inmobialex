@@ -1,0 +1,278 @@
+{% extends './base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    input::placeholder { color: black !important; }
+    select::title { color: black !important; }
+</style>
+<div class="slider-area">
+    <div class="slider">
+        <div id="bg-slider" class="owl-carousel owl-theme">
+
+            <div class="item"><img src="{% static 'assets/img/slide1/slider-image-4.jpg' %}" alt="GTA V"></div>
+            <div class="item"><img src="{% static 'assets/img/slide1/slider-image-4.jpg' %}" alt="GTA V"></div>
+            <div class="item"><img src="{% static 'assets/img/slide1/slider-image-4.jpg' %}" alt="GTA V"></div>
+
+        </div>
+    </div>
+    <div class="container slider-content">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
+                <h2>LA BÚSQUEDA DE PROPIEDADES AHORA ES TAN FÁCIL</h2>
+                <div class="search-form wow pulse" data-wow-delay="0.8s">
+
+                    <form action="" class=" form-inline">
+                        <button class="btn  toggle-btn" type="button"><i class="fa fa-bars"></i></button>
+
+                        <!-- <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Palabra clave">
+                        </div> -->
+                        <div class="form-group">                                   
+                            <select id="lunchBegins" class="selectpicker ciudad" data-live-search="true" data-live-search-style="begins" title="Selecciona la ciudad">
+                                <option>Medellin</option>
+                                <option>Cartagena de indias</option>
+                                <option>Barranquilla</option>
+                                <option>Bogota</option>
+                                <option>Cali</option>
+                                <option>Eje Catefero</option>
+                            </select>
+                        </div>
+                        <div class="form-group">                                     
+                            <input type="text" class="date" name="daterange" value="01/01/2018 - 01/15/2018" />
+                        </div>
+
+                        <button class="btn search-btn" type="submit"><i class="fa fa-search"></i></button>
+
+                        <div style="display: none;" class="search-toggle">
+                            <br>
+                            <div class="search-row">  
+
+                                <div class="form-group">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> Chimenea(3100)
+                                        </label>
+                                    </div>
+                                </div>
+                                <!-- End of  -->  
+
+                                <div class="form-group">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> Piscina(500)
+                                        </label>
+                                    </div>
+                                </div>
+                                <!-- End of  --> 
+
+                                <div class="form-group">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> Lavadora(99)
+                                        </label>
+                                    </div>
+                                </div>
+                                <!-- End of  --> 
+                            </div>
+
+                            <div class="search-row">  
+
+                                <div class="form-group">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> Estacionamiento(1190)
+                                        </label>
+                                    </div>
+                                </div>
+                                <!-- End of  -->  
+
+                                <div class="form-group">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> Zona de comida(4600)
+                                        </label>
+                                    </div>
+                                </div>
+                                <!-- End of  --> 
+
+                                <div class="form-group">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> Jacuzzy(200)
+                                        </label>
+                                    </div>
+                                </div>
+                                <!-- End of  --> 
+                            </div>                                    
+
+                            <div class="search-row">  
+
+                                <div class="form-group">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> Wi-Fi(10073)
+                                        </label>
+                                    </div>
+                                </div>
+                                <!-- End of  -->  
+
+                                <div class="form-group">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> TV por cable(1503)
+                                        </label>
+                                    </div>
+                                </div>
+                                <!-- End of  --> 
+
+                                <div class="form-group">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> Zona de trabajo(1200)
+                                        </label>
+                                    </div>
+                                </div>
+                                <!-- End of  --> 
+                            </div>   
+
+                        </div>                     
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- property area -->
+<div class="content-area recent-property" style="padding-bottom: 60px; background-color: rgb(252, 252, 252);">
+    <div class="container">   
+        <div class="row">
+            <div class="col-md-12  padding-top-40 properties-page">
+                <div class="col-md-12 "> 
+                    <div class="col-xs-10 page-subheader sorting pl0">
+                    </div>
+                    <div class="col-xs-2 layout-switcher">
+                        <a class="layout-list" href="javascript:void(0);"> <i class="fa fa-th-list"></i>  </a>
+                        <a class="layout-grid active" href="javascript:void(0);"> <i class="fa fa-th"></i> </a>                          
+                    </div><!--/ .layout-switcher-->
+                </div>
+
+                <div class="col-md-12 "> 
+                    <div id="list-type" class="proerty-th">
+                        {% for i in op %}
+                            <div class="col-sm-6 col-md-3 p0">
+                                <div class="box-two proerty-item">
+                                    <div class="item-thumb">
+                                        <a href="property-1.html" ><img src="{{i.photo}}"></a>
+                                    </div>
+
+                                    <div class="item-entry overflow">
+                                        <h5>
+                                            <a href="{% url 'Details_Property' i.pk %}"> {{i.title}} </a>
+                                        </h5>
+                                        <div class="dot-hr"></div>
+                                        <!-- <span class="pull-left"><b> Area :</b> 120m </span> -->
+                                        {% if i.discount != 0 %}
+                                            <span class="proerty-price pull-right">
+                                                Precio
+                                                ${{i.price_with_discount}} &nbsp;/
+                                                <small><span style="text-decoration: line-through;">
+                                                    ${{i.price}} - {{i.discount}}% 
+                                                </span></small>
+                                            </span>
+                                        {% else %}
+                                            <span class="proerty-price pull-right">
+                                                Precio ${{i.price}}
+                                            </span>
+                                        {% endif %}
+                                        <p style="display: none;">
+                                            {{i.description|truncatechars:250}}
+                                        </p>
+                                        <div class="property-icon">
+                                            <img src="{% static 'assets/img/icon/bed.png' %}">({{i.beds}})|
+                                            <img src="{% static 'assets/img/icon/shawer.png' %}">({{i.bathrooms}})|
+                                            <img src="{% static 'assets/img/icon/cars.png' %}">({{i.parking}})  
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+                <!-- <div class="col-md-12"> 
+                    <div class="pull-right">
+                        <div class="pagination">
+                            <ul>
+                                <li><a href="#">Prev</a></li>
+                                <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">Next</a></li>
+                            </ul>
+                        </div>
+                    </div>                
+                </div> -->
+            </div>  
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block script %}
+
+    <script>
+        let municipalities = []
+        $(document).ready(function(){
+            let today = new Date().getFullYear()
+            $(".date").val(today)
+
+            $('input[name="daterange"]').daterangepicker({
+                autoApply:true,
+                opens: 'center',
+              }, function(start, end, label) {
+                console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+              });
+
+            if(navigator.geolocation){
+                var success = function(position){
+                    var latitud = position.coords.latitude,
+                    longitud = position.coords.longitude;
+                    let country;
+                    console.log(position)
+                    key = "4a15bf236b0f4d10ab888f1dfb284cc7"
+                    const reverseGeocodingUrl = `https://api.geoapify.com/v1/geocode/reverse?lat=${latitud}&lon=${longitud}&apiKey=${key}`;
+                    fetch(reverseGeocodingUrl).then(result => result.json())
+                    .then(featureCollection => {
+                        console.log(featureCollection['features']);
+                        console.log(featureCollection['features'][0]['properties']['country']);
+                        country = featureCollection['features'][0]['properties']['country'];
+                        $.ajax({
+                            url:"{% url 'GetCountry' %}",
+                            data:{'country':country},
+                            success:function(data){
+                            }
+                        })
+                    });
+                    
+                }
+                navigator.geolocation.getCurrentPosition(success, function(msg){
+                    console.error( msg );
+                });
+            }
+
+            $(".date").change(function(){
+                localStorage.setItem('date_destination',$(".date").val())
+                console.log(localStorage.getItem('date_destination'))
+            })
+
+            // $(".ciudad").change(function(){
+            //     localStorage.setItem('city':$(".ciudad").val())
+            // })
+        })
+    </script>
+
+{% endblock %}

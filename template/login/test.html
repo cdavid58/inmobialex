@@ -1,0 +1,40 @@
+<script>
+    $('#guardarRegistro').click(function(e) {
+        $("#ErroresRegistro").html('');
+        e.preventDefault(); // Detienes la accion por defecto
+        var unidades = $('#valor1').val(); // obtienes el valor del input
+        var precio = $('#valor2').val(); // obtienes el valor del input
+        var descripcion = $('#valor3').val();// obtienes el valor del input
+        var imagen = $("#valor4")[0].files[0]; // obtienes el archivo cargado en el input
+        console.log("imagen", imagen);
+        // Obviamente aqui debes hacer validaciones para que no vengan vacios los campos...
+        // que vengan solo los tipos de archivo que quieres almacenar...
+        // No puedes permitir que almacenen cualquier puedes hacer que tu sitio sea vulnerable 
+        if (unidades == '' || precio == '' || descripcion == '' || imagen == '') {
+            $('#ErroresRegistro').html(`<p style="background:red; color:white; margin-top:10px; padding:10px;">Todos los campos son requeridos</p>`);
+        } else if (imagen["type"] != "image/jpeg") { 
+            $('#ErroresRegistro').html(`<p style="background:red; color:white; margin-top:10px; padding:10px;">Solo se permiten archivos en formato JPG.</p>`);
+        } else {
+            $('#ErroresRegistro').html('');
+            var datos = new FormData(); // https://developer.mozilla.org/es/docs/Web/Guide/Usando_Objetos_FormData
+            datos.append('valorCaja1', unidades)
+            datos.append('valorCaja2', precio)
+            datos.append('valorCaja3', descripcion)
+            datos.append('valorCaja4', imagen)
+            $.ajax({
+                url: "insertarproducto.php",
+                method: "POST",
+                data: datos,
+                cache: false,
+                contentType: false,
+                processData: false,
+                beforeSend: function () {
+                    $("#ErroresRegistro").html(`<p style="background:orange; color:white; margin-top:10px; padding:10px;">Procesando, espere por favor...</p>`);
+                },
+                success:  function (response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
+                    $("#ErroresRegistro").html(response);
+                }
+            })
+        }
+    })
+</script>

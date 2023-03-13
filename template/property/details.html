@@ -1,0 +1,614 @@
+{% extends '../base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- <div class="page-head"> 
+    <div class="container">
+        <div class="row">
+            <div class="page-head-content">
+                <h1 class="page-title">Super nice villa </h1>               
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<!-- property area -->
+<div class="content-area single-property" style="background-color: #FCFCFC;">&nbsp;
+    <div class="container">   
+
+        <div class="clearfix padding-top-40" >
+
+            <div class="col-md-8 single-property-content prp-style-1 ">
+                <div class="row">
+                    <div class="light-slide-item">            
+                        <div class="clearfix">
+                            <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
+                                {% for i in photos %}
+                                    <li data-thumb="{{i.img}}"> 
+                                        <img src="{{i.img}}" />
+                                    </li>
+                                {% endfor %}                                        
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="single-property-wrapper">
+                    <div class="single-property-header">                                          
+                        <h1 class="property-title pull-left">{{op.title}}</h1>
+                        <span class="property-price pull-right">${{op.price}}</span>
+                    </div>
+
+                    <div class="property-meta entry-meta clearfix ">   
+
+                        <div class="col-xs-6 col-sm-3 col-md-3 p-b-15">
+                            <span class="property-info-icon icon-tag">                                        
+                                <img src="{% static 'assets/img/icon/sale-orange.png' %}">
+                            </span>
+                            <span class="property-info-entry">
+                                <span class="property-info-label">Estatus</span>
+                                <span class="property-info-value">{{op.available}}</span>
+                            </span>
+                        </div>
+
+                        <div class="col-xs-6 col-sm-3 col-md-3 p-b-15">
+                            <span class="property-info-icon icon-bed">
+                                <img src="{% static 'assets/img/icon/bed-orange.png' %}">
+                            </span>
+                            <span class="property-info-entry">
+                                <span class="property-info-label">Cama</span>
+                                <span class="property-info-value">{{op.beds}}</span>
+                            </span>
+                        </div>
+
+                        <div class="col-xs-6 col-sm-3 col-md-3 p-b-15">
+                            <span class="property-info-icon icon-bed">
+                                <img src="{% static 'assets/img/icon/cars-orange.png' %}">
+                            </span>
+                            <span class="property-info-entry">
+                                <span class="property-info-label">Estacionamiento</span>
+                                <span class="property-info-value">{{op.parking}}</span>
+                            </span>
+                        </div>
+
+                        <div class="col-xs-6 col-sm-3 col-md-3 p-b-15">
+                            <span class="property-info-icon icon-bath">
+                                <img src="{% static 'assets/img/icon/shawer-orange.png' %}">
+                            </span>
+                            <span class="property-info-entry">
+                                <span class="property-info-label">Baño</span>
+                                <span class="property-info-value">{{op.bathrooms}}</span>
+                            </span>
+                        </div>
+
+                        <div class="col-xs-6 col-sm-3 col-md-3 p-b-15">
+                            <span class="property-info-icon icon-garage">
+                                <img src="{% static 'assets/img/icon/resident.png' %}">
+                            </span>
+                            <span class="property-info-entry">
+                                <span class="property-info-label">Residente</span>
+                                <span class="property-info-value">{{inf_1.resident}}</span>
+                            </span>
+                        </div>
+                        
+                        <div class="col-xs-6 col-sm-3 col-md-3 p-b-15">
+                            <span class="property-info-icon icon-garage">
+                                <img src="{% static 'assets/img/icon/rooms.png' %}">
+                            </span>
+                            <span class="property-info-entry">
+                                <span class="property-info-label">Habitaciones</span>
+                                <span class="property-info-value">{{inf_1.room}}</span>
+                            </span>
+                        </div>
+
+
+                    </div>
+                    <!-- .property-meta -->
+
+                    <div class="section">
+                        <h4 class="s-property-title">Description</h4>
+                        <div class="s-property-content">
+                            <p>
+                                {{op.description}}
+                            </p>
+                        </div>
+                    </div>
+                    <!-- End description area  -->
+
+                    <div class="section additional-details">
+
+                        <h4 class="s-property-title">Detalle Adicional</h4>
+
+                        <ul class="additional-details-list clearfix">
+                            <li>
+                                <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Aire Acondicionado</span>
+                                <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">{{inf_1.air_conditioning}}</span>
+                            </li>
+
+                            <li>
+                                <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Zona de trabajo</span>
+                                <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">{{inf_1.work_zone}}</span>
+                            </li>
+
+                            <li>
+                                <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Jacuzzy</span>
+                                <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">{{inf_2.jacuzzi}}</span>
+                            </li>
+
+                            <li>
+                                <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Piscina</span>
+                                <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">{{inf_2.pool}}</span>
+                            </li>
+                            <li>
+                                <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Terraza</span>
+                                <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">{{inf_2.terrace}}</span>
+                            </li>
+
+                            <li>
+                                <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Parrilla</span>
+                                <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">{{inf_2.grill}}</span>
+                            </li>
+
+                            <li>
+                                <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Salida a la playa</span>
+                                <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">{{inf_2.beach}}</span>
+                            </li>
+
+                            <li>
+                                <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Zona de comida</span>
+                                <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">{{inf_2.pool_table}}</span>
+                            </li> 
+
+                        </ul>
+                    </div>  
+                    <!-- End additional-details area  -->
+
+                    <div class="section property-video"> 
+                        <h4 class="s-property-title">Video de la propiedad</h4> 
+                        <div class="video-thumb">
+                            <a class="video-popup" href="yout" title="Virtual Tour">
+                                <img src="{% static 'assets/img/property-video.jpg' %}" class="img-responsive wp-post-image" alt="Exterior">            
+                            </a>
+                        </div>
+                    </div>
+                    <!-- End video area  -->
+
+                    <h2>Deja tu comentario</h2>
+                    <form>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="firstname">Nombre de pila</label>
+                                    <input type="text" class="form-control" id="firstname">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="lastname">Apellido</label>
+                                    <input type="text" class="form-control" id="lastname">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="email">Correo electrónico</label>
+                                    <input type="text" class="form-control" id="email">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="subject">Asunto</label>
+                                    <input type="text" class="form-control" id="subject">
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label for="message">Mensaje</label>
+                                    <textarea id="message" rows="4" style="resize:none;" class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 text-center">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Enviar Comentario</button>
+                            </div>
+                        </div>
+                        <!-- /.row -->
+                    </form>
+                    
+                </div>
+            </div>
+
+
+            <div class="col-md-4 p0">
+                <aside class="sidebar sidebar-property blog-asside-right">
+                    <div class="dealer-widget">
+                        <div class="dealer-content">
+                            <div class="inner-wrapper">
+
+                                <div class="clear">
+                                    <div class="col-xs-4 col-sm-4 dealer-face">
+                                        <a href="">
+                                            <img src="{{op.agent_photo}}" class="img-circle">
+                                        </a>
+                                    </div>
+                                    <div class="col-xs-8 col-sm-8 ">
+                                        <h3 class="dealer-name">
+                                            <a href="">{{op.agent_name}}</a>
+                                            <!-- <span>Encargado</span>         -->
+                                        </h3>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default sidebar-menu similar-property-wdg wow fadeInRight animated">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Propiedades Similares</h3>
+                        </div>
+                        <div class="panel-body recent-property-widget">
+                                <ul>
+                                <li>
+                                    <div class="col-md-3 col-sm-3 col-xs-3 blg-thumb p0">
+                                        <a href="single.html"><img src="{% static 'assets/img/demo/small-property-2.jpg' %}"></a>
+                                    </div>
+                                    <div class="col-md-8 col-sm-8 col-xs-8 blg-entry">
+                                        <h6> <a href="single.html">Super nice villa </a></h6>
+                                        <span class="property-price">3.000.000$</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="col-md-3 col-sm-3  col-xs-3 blg-thumb p0">
+                                        <a href="single.html"><img src="{% static 'assets/img/demo/small-property-1.jpg' %}"></a>
+                                    </div>
+                                    <div class="col-md-8 col-sm-8 col-xs-8 blg-entry">
+                                        <h6> <a href="single.html">Super nice villa </a></h6>
+                                        <span class="property-price">3.000.000$</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="col-md-3 col-sm-3 col-xs-3 blg-thumb p0">
+                                        <a href="single.html"><img src="{% static 'assets/img/demo/small-property-3.jpg' %}"></a>
+                                    </div>
+                                    <div class="col-md-8 col-sm-8 col-xs-8 blg-entry">
+                                        <h6> <a href="single.html">Super nice villa </a></h6>
+                                        <span class="property-price">3.000.000$</span>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="col-md-3 col-sm-3 col-xs-3 blg-thumb p0">
+                                        <a href="single.html"><img src="{% static 'assets/img/demo/small-property-2.jpg' %}"></a>
+                                    </div>
+                                    <div class="col-md-8 col-sm-8 col-xs-8 blg-entry">
+                                        <h6> <a href="single.html">Super nice villa </a></h6>
+                                        <span class="property-price">3.000.000$</span>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>                          
+
+                    <div class="panel panel-default sidebar-menu wow fadeInRight animated">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Anuncio Aqui</h3>
+                        </div>
+                        <div class="panel-body recent-property-widget">
+                            <img src="{% static 'foto.jpg' %}">
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default sidebar-menu wow fadeInRight animated" >
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Reservar</h3>
+                        </div>
+                        <div class="panel-body search-widget">
+                            <form class="form_reservation form-inline" method="post">{% csrf_token %}
+                                <fieldset>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <h5>Precio por noche:&nbsp;<span id="total_x_noche">{{op.price}}</span></h5>
+                                            <h5>Tarifa de limpieza:&nbsp;<span id="fee_clean">{{op.price_clean}}</span></h5>
+                                            <h5>Noches:&nbsp;<span id="evening">1</span></h5>
+                                            <h5>Tarifa de servicio:&nbsp;<span id="tarifa_cobrar_cliente">30000</span></h5>
+                                            <!-- <h5><span id="multiplo">{{op.price}}</span> X <span id="total_noche">1</span> Noches <span id="total_multiplo">{{op.price}}</span></h5> -->
+                                            <h5><strong>Total sin incluir impuestos:&nbsp;<span id="total_payment"></span></strong></h5>
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                                <fieldset>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <label>Fecha de entrada y salida</label>
+                                            <input type="text" class="date" min="2023-28-02" name="daterange" />
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <br>
+                                <fieldset>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <label>Añade tu hora de llegada aproximada<br>
+                                                <small>
+                                                    * Tu habitación estará lista para el check-in entre las 15:00 y las 22:00
+                                                    * Recepción 24 horas – ¡Tendrás ayuda siempre que la necesites!
+                                                </small>
+                                            </label>
+                                            <select id="lunchBegins" class="selectpicker hour_input" data-live-search-style="begins">
+                                                <option value="0 - 0">No lo sé</option>
+                                                <option value="13:00 - 14:00">13:00 - 14:00</option>
+                                                <option value="14:00 - 15:00">14:00 - 15:00</option>
+                                                <option value="15:00 - 16:00">15:00 - 16:00</option>
+                                                <option value="16:00 - 17:00">16:00 - 17:00</option>
+                                                <option value="17:00 - 18:00">17:00 - 18:00</option>
+                                                <option value="18:00 - 19:00">18:00 - 19:00</option>
+                                                <option value="19:00 - 20:00">19:00 - 20:00</option>
+                                                <option value="20:00 - 21:00">20:00 - 21:00</option>
+                                                <option value="21:00 - 22:00">21:00 - 22:00</option>
+                                                <option value="22:00 - 23:00 ">22:00 - 23:00 </option>
+                                                <option value="23:00 - 00:00 ">23:00 - 00:00 </option>
+                                                <option value="00:00 - 01:00 (día siguiente)">00:00 - 01:00 (día siguiente)</option>
+                                                <option value="01:00 - 02:00 (día siguiente)">01:00 - 02:00 (día siguiente)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                               
+
+                                <fieldset class="padding-5">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <label style="margin-left: 40%">Huespedes</label><br>
+                                            <a href="javascript:changeQuantityLess(-1)"><img src="https://www.jose-aguilar.com/scripts/javascript/plus-min-input/images/minusBtn.gif"></a>
+                                            <input name="quantity" disabled id="quantity" style="width:85%;" class=" text-center" value="1"  min="1" pattern="^[0-9]+" size="4" onChange="UpdateCartQuantity();" />
+                                            <a href="javascript:changeQuantityAdd(1)"><img src="https://www.jose-aguilar.com/scripts/javascript/plus-min-input/images/plusBtn.gif"></a>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <br>
+                                <fieldset>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <label>Peticiones especiales<br>
+                                                <small>Las peticiones especiales no se pueden garantizar, pero el alojamiento hará todo lo posible por satisfacerlas. ¡También puedes enviarnos tu petición especial cuando hayas realizado la reserva!</small>
+                                            </label>
+                                            <br>
+                                            <textarea name="textarea" class="note" rows="3" style="resize: none;" cols="45" placeholder="Escribe aquí"></textarea>
+                                        </div>
+                                    </div>
+                                </fieldset><br>
+                                {% if request.session.pk_user %}
+                                    </fieldset>
+                                        <fieldset >
+                                            <div class="row">
+                                                <div class="col-xs-12">  
+                                                    <button class="button btn largesearch-btn reserved" type="button">Reservar</button>
+                                                </div>  
+                                            </div>
+                                    </fieldset>
+                                {% else %}
+                                    <fieldset>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <label>NOTA<br>
+                                                    Para reservar la propiedad deberá iniciar sesión con su cuenta de usuario
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                {% endif %}
+                            </form>
+                        </div>
+                    </div>
+
+                </aside>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
+{% block script %}
+    <script type="text/javascript" src="https://checkout.wompi.co/widget.js"></script>
+    <script>
+        let total_price = parseFloat('{{op.price}}');
+        let value_por = 0; //20 / 40
+        let porcentaje_x_persona = 0.2
+        let porcentaje_ganancia = 0
+        let porcentaje_subtotal_reservacion = 0.03
+        let tarifa_limpieza = parseFloat('{{op.price_clean}}')
+        let precio_x_aumento_persona = 0;
+        let price_days = 0;
+
+        let days = 1
+        tt = (total_price + tarifa_limpieza)
+        tt = tt  +  (tt * porcentaje_ganancia)
+        tt = tt + ( total_price * porcentaje_subtotal_reservacion)
+        $("#tarifa_cobrar_cliente").text(Math.round(total_price * porcentaje_subtotal_reservacion))
+        $("#total_payment").text(Math.round(tt))
+        price_days = tt
+
+        function changeQuantityLess(qty) {
+            price = parseFloat("{{op.price}}")
+            if(parseFloat($("#quantity").val()) > 1){
+                $("#quantity").val(Number($("#quantity").val())+Number(qty))
+                quanty_adult = parseFloat($("#quantity").val())
+                if(quanty_adult > 1){
+                    total_price = total_price / ( 1 + porcentaje_x_persona)
+                }
+                else if(quanty_adult == 1){
+                    total_price = price
+                }
+                Days_Differens($(".date").val())
+            }
+        }
+
+        function changeQuantityAdd(qty){
+            price = parseFloat("{{op.price}}")
+            capacity = parseFloat("{{inf_1.resident}}")
+            quanty_adult = parseFloat($("#quantity").val())
+            if(quanty_adult < 5){
+                $("#quantity").val(Number($("#quantity").val())+Number(qty))
+                quanty_adult = parseFloat($("#quantity").val())
+                if(quanty_adult > 1){
+                    total_price = total_price + (total_price * porcentaje_x_persona)
+                }
+                Days_Differens($(".date").val())
+            }
+        }
+
+        function Days_Differens(date){
+            date = date.split('-')
+            let fecha1 = new Date(date[0]);
+            let fecha2 = new Date(date[1]);
+            let diferencia = fecha2.getTime() - fecha1.getTime();
+            let diasDeDiferencia = diferencia / 1000 / 60 / 60 / 24;
+            days = parseInt(diasDeDiferencia)
+            $("#evening").text(diasDeDiferencia)
+            price_days = (total_price * days) + tarifa_limpieza
+            price_days = price_days + (price_days * porcentaje_ganancia)
+            price_days = price_days + (total_price * porcentaje_subtotal_reservacion)
+            $("#total_payment").text(Math.round(parseFloat(price_days).toFixed(2)))
+        }
+
+
+        $(document).ready(function(){
+
+            if(!"{{request.session.pk_user}}"){
+                $.gritter.add({
+                    title: 'NOTA',
+                    text: "Para reservar la propiedad deberá iniciar sesión con su cuenta de usuario"
+                });
+            }
+            
+
+            $('input[name="daterange"]').daterangepicker({
+                autoApply:true,
+                opens: 'center',
+              }, function(start, end, label) {
+                console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+            });
+
+            if (window.localStorage) {
+              window.addEventListener('storage', event => {
+                if (event.storageArea === localStorage) {
+                  if ( window.localStorage.getItem('date_destination') !== undefined && window.localStorage.getItem('date_destination') ) {
+                    date = localStorage.getItem('date_destination').split('-')
+                    $('input[name="daterange"]').data('daterangepicker').setStartDate(date[0]);
+                    $('input[name="daterange"]').data('daterangepicker').setEndDate(date[1]);
+                  }
+                  else{
+                    let today = new Date().getFullYear()
+                    $(".date").val(today)
+                  }
+                }
+              }, false);
+            }
+
+            $("#lunchBegins").change(function(){
+                console.log($("#lunchBegins").val())
+            })
+
+            $(".date").change(function(){
+                Days_Differens($(".date").val())
+            })
+
+
+            $(".reserved").click(function(){
+                console.log((price_days / (1 + porcentaje_ganancia)))
+                var checkout = new WidgetCheckout({
+                    currency: 'COP',
+                    amountInCents:  Math.round(price_days) * 100,
+                    reference: 'AD8847745999876',
+                    publicKey: 'pub_test_Zs0LVNeaLOG440kKSAp0YRXBO8M0VBP0',
+                    redirectUrl: 'https://transaction-redirect.wompi.co/check', // Opcional
+                    taxInCents: { // Opcional
+                     vat: 1900,
+                     consumption: 800
+                    },
+                    customerData: { // Opcional
+                     email:'{{request.session.email_user}}',
+                     fullName: '{{resident.name}}',
+                     phoneNumber: '{{resident.phone}}',
+                     phoneNumberPrefix: '+57',
+                    },
+                    shippingAddress: { // Opcional
+                     addressLine1: "Calle 123 # 4-5",
+                     city: "Bogota",
+                     phoneNumber: '3019444444',
+                     region: "Cundinamarca",
+                     country: "CO"
+                    }
+                })
+                checkout.open(function ( result ) {
+                    var transaction = result.transaction
+                    console.log('Transaction ID: ', transaction.id)
+                    console.log('Transaction object: ', transaction)
+                    if(transaction.status == "APPROVED"){
+                        obj = {
+                            price: Math.round(price_days / (1 + porcentaje_ganancia)),
+                            date: $(".date").val(),
+                            hour:$("#lunchBegins").val(),
+                            persons: $("#quantity").val(),
+                            client: '{{request.session.email_user}}',
+                            phone:'{{request.session.phone}}',
+                            property:'{{op.pk}}',
+                            note:$(".note").val(),
+                            days : days,
+                            feed_clean: tarifa_limpieza,
+                            pk_user :'{{op.agent_pk}}'
+                        }
+                        $.ajax({
+                            url:"{% url 'Create_Reservation' %}",
+                            data:obj,
+                            success: function(data){
+
+                            }
+                        })
+                    }
+
+                })
+
+                // obj = {
+                //     price: Math.round(price_days / (1 + porcentaje_ganancia)),
+                //     date: $(".date").val(),
+                //     hour:$("#lunchBegins").val(),
+                //     persons: $("#quantity").val(),
+                //     client: '{{request.session.email_user}}',
+                //     phone:'{{request.session.phone}}',
+                //     property:'{{op.pk}}',
+                //     note:$(".note").val(),
+                //     days : days,
+                //     feed_clean: tarifa_limpieza
+                // }
+               
+
+
+
+
+                
+            })
+
+
+            
+            
+
+
+            $('#image-gallery').lightSlider({
+                gallery: true,
+                item: 1,
+                thumbItem: 9,
+                slideMargin: 0,
+                speed: 500,
+                auto: true,
+                loop: true,
+                onSliderLoad: function () {
+                    $('#image-gallery').removeClass('cS-hidden');
+                }
+            });
+        })
+    </script>
+
+{% endblock %}

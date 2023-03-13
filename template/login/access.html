@@ -1,0 +1,110 @@
+{% extends '../base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="page-head"> 
+    <div class="container">
+        <div class="row">
+            <div class="page-head-content">
+                <h1 class="page-title">INICIO NUEVA CUENTA / INICIAR SESIÓN </h1>               
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End page header -->
+
+
+<!-- register-area -->
+<div class="register-area" style="background-color: rgb(249, 249, 249);">
+    <div class="container">
+
+        <div class="col-md-6">
+            <div class="box-for overflow">
+                <div class="col-md-12 col-xs-12 register-blocks">
+                    <h2>NUEVA CUENTA : </h2> 
+                    <form action="" method="post">
+                        <div class="form-group">
+                            <label for="email">Correo electrónico</label>
+                            <input type="email" class="form-control email_register" id="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Contraseña</label>
+                            <input type="password" class="form-control psswd_register" id="password">
+                        </div>
+                        <div class="text-center">
+                            <button type="button" class="btn btn-default register">Registro</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="box-for overflow">                         
+                <div class="col-md-12 col-xs-12 login-blocks">
+                    <h2>ACCESO  : </h2> 
+                    <div class="form-group">
+                        <label for="email">Correo electrónico</label>
+                        <input type="email" class="form-control email_login" id="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Contraseña</label>
+                        <input type="password" class="form-control psswd_login" id="password">
+                    </div>
+                    <div class="text-center">
+                        <button type="button" class="btn btn-default access"> Acceso</button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</div> 
+
+
+{% endblock %}
+{% block script %}
+    
+    <script>
+        $(document).ready(function(){
+            $('.access').click(function(){
+                $.ajax({
+                    url:"{% url 'Login' %}",
+                    data:{'email':$(".email_login").val(),'psswd':$(".psswd_login").val()},
+                    success: function(data){
+                        if(data != "True"){
+                            $.gritter.add({
+                                title: 'Oops!',
+                                text: data
+                            });
+                        }
+                        else{
+                            location.href = "{% url 'Home' %}"
+                        }
+                    }
+                })
+            })
+
+            $(".register").click(function(){
+                $.ajax({
+                    url:"{% url 'Register' %}",
+                    data:{'email':$(".email_register").val(),'psswd':$(".psswd_register").val()},
+                    success: function(data){
+                        if(data != "True"){
+                            $.gritter.add({
+                                title: 'Oops!',
+                                text: data
+                            });
+                        }
+                        else{
+                            location.href = "{% url 'Home' %}"
+                        }
+                    }
+                })
+            })
+        })
+    </script>
+
+{% endblock %}
