@@ -17,9 +17,12 @@ def Login(request):
 				result = "Usuario o contraseña incorrecta"
 			user = None
 		if user is not None:
+			
 			request.session['pk_user'] = user.pk
 			request.session['email_user'] = user.email
 			request.session['phone'] = user.phone
+			request.session['name_user'] = user.name
+			print(request.session['name_user'],'name_user')
 			result = True
 		return HttpResponse(result)
 

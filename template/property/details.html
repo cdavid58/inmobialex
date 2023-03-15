@@ -172,48 +172,97 @@
                         </div>
                     </div>
                     <!-- End video area  -->
-
-                    <h2>Deja tu comentario</h2>
-                    <form>
+                    <br>
+                    <div class="content-area blog-page padding-top-40" style="background-color: #FCFCFC; padding-bottom: 55px;">
+                    <div class="container">
                         <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="firstname">Nombre de pila</label>
-                                    <input type="text" class="form-control" id="firstname">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="lastname">Apellido</label>
-                                    <input type="text" class="form-control" id="lastname">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="email">Correo electrónico</label>
-                                    <input type="text" class="form-control" id="email">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="subject">Asunto</label>
-                                    <input type="text" class="form-control" id="subject">
-                                </div>
-                            </div>
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <label for="message">Mensaje</label>
-                                    <textarea id="message" rows="4" style="resize:none;" class="form-control"></textarea>
-                                </div>
-                            </div>
-                            <div class="col-sm-12 text-center">
-                                <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Enviar Comentario</button>
-                            </div>
+                            <div class="blog-lst col-md-6 pl0">
+
+                                <section id="comments" class="comments wow fadeInRight animated"> 
+                                    <h4 class="text-uppercase wow fadeInLeft animated">3 comments</h4>
+                                    <div class="row comment">
+                                        <div class="col-sm-3 col-md-2 text-center-xs">
+                                            <p>
+                                                <img src="{% static 'assets/img/client-face1.png' %}" class="img-responsive img-circle" alt="">
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-9 col-md-10">
+                                            <h5 class="text-uppercase">Julie Alma</h5>
+                                            <p class="posted"><i class="fa fa-clock-o"></i> September 23, 2011 at 12:00 am</p>
+                                            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper.
+                                                Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+                                            <p class="reply"><a href="#"><i class="fa fa-reply"></i> Reply</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="row comment last">
+                                        <div class="col-sm-3 col-md-2 text-center-xs">
+                                            <p>
+                                                <img src="{% static 'assets/img/client-face2.png' %}" class="img-responsive img-circle" alt="">
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-9 col-md-10">
+                                            <h5 class="text-uppercase">Louise Armero</h5>
+                                            <p class="posted"><i class="fa fa-clock-o"></i> September 23, 2012 at 12:00 am</p>
+                                            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper.
+                                                Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+                                            <p class="reply"><a href="#"><i class="fa fa-reply"></i> Reply</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>                                 
                         </div>
-                        <!-- /.row -->
-                    </form>
+
+                    </div>
+                </div><br>
+                    {% if request.session.pk_user %}
+                        <h2>Deja tu comentario</h2>
+                        <form>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="firstname">Nombre de pila</label>
+                                        <input type="text" class="form-control" id="firstname">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="lastname">Apellido</label>
+                                        <input type="text" class="form-control" id="lastname">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="email">Correo electrónico</label>
+                                        <input type="text" class="form-control" id="email">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="subject">Asunto</label>
+                                        <input type="text" class="form-control" id="subject">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="message">Mensaje</label>
+                                        <textarea id="message" rows="4" style="resize:none;" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 text-center">
+                                    <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Enviar Comentario</button>
+                                </div>
+                            </div>
+                            <!-- /.row -->
+                        </form>
+                    {% endif %}
                     
                 </div>
+
+                <br>
+                
+
             </div>
 
 
@@ -374,11 +423,11 @@
                                                 <small>Las peticiones especiales no se pueden garantizar, pero el alojamiento hará todo lo posible por satisfacerlas. ¡También puedes enviarnos tu petición especial cuando hayas realizado la reserva!</small>
                                             </label>
                                             <br>
-                                            <textarea name="textarea" class="note" rows="3" style="resize: none;" cols="45" placeholder="Escribe aquí"></textarea>
+                                            <textarea name="textarea" class="note" rows="3" style="resize: none;" cols="39" placeholder="Escribe un mensaje para el propietario"></textarea>
                                         </div>
                                     </div>
                                 </fieldset><br>
-                                {% if request.session.pk_user %}
+                                {% if request.session.pk_user and request.session.name_user != "" %}
                                     </fieldset>
                                         <fieldset >
                                             <div class="row">
@@ -392,7 +441,7 @@
                                         <div class="row">
                                             <div class="col-xs-12">
                                                 <label>NOTA<br>
-                                                    Para reservar la propiedad deberá iniciar sesión con su cuenta de usuario
+                                                    Para reservar la propiedad deberá iniciar sesión con su cuenta de usuario y completar los datos en su cuenta.
                                                 </label>
                                             </div>
                                         </div>
@@ -482,6 +531,12 @@
                     text: "Para reservar la propiedad deberá iniciar sesión con su cuenta de usuario"
                 });
             }
+            if("{{request.session.name_user}}" !== " "){
+                $.gritter.add({
+                    title: 'NOTA',
+                    text: "Para reservar la propiedad completar sus datos en la cuenta"
+                });
+            }
             
 
             $('input[name="daterange"]').daterangepicker({
@@ -558,7 +613,8 @@
                             note:$(".note").val(),
                             days : days,
                             feed_clean: tarifa_limpieza,
-                            pk_user :'{{op.agent_pk}}'
+                            pk_user :'{{op.agent_pk}}',
+                            name_user : '{{resindet.name}}'
                         }
                         $.ajax({
                             url:"{% url 'Create_Reservation' %}",

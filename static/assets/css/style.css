@@ -2799,12 +2799,12 @@ padding-bottom: 15px;
 /*FOOOTER*/
 .footer-area{
 border-top: 1px solid #D1D1D1;
-background: #555 url("../../assets/img/bg-footer.jpg") repeat scroll 0% 0%;
+background: #00416A repeat scroll 0% 0%;
 color: #535353;
 }
 .footer{
 padding: 0px 0px 60px;
-background: rgba(255, 255, 255, 0.89) none repeat scroll 0% 0%;
+background: rgba(255, 255, 255,0) none repeat scroll 0% 0%;
 }
 .footer ul li i { 
     padding-right: 10px;

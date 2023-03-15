@@ -20,8 +20,10 @@ def GetCountry(request):
 
 def Details_Property(request,pk):
 	op = Opertations().GetDeatilProperty(pk)
-	print(op)
-	resident = Resident.objects.get(email = request.session['email_user'])
+	try:
+		resident = Resident.objects.get(email = request.session['email_user'])
+	except Exception as e:
+		resident = None
 	return render(request,'property/details.html',{'op':op,'photos':op['multimedia'],'inf_1':op['information'][0],'inf_2':op['information_extra'][0], 'resident':resident})
 
 def Contact(request):
