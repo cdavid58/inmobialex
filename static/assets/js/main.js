@@ -70,7 +70,7 @@ $(document).ready(function () {
     $('#min-bed').slider();
 
     var RGBChange = function () {
-        $('#RGB').css('background', '#FDC600')
+        $('#RGB').css('background', '#efb810')
     };
 
     // Advanced search toggle
