@@ -572,79 +572,85 @@
 
 
             $(".reserved").click(function(){
-                console.log((price_days / (1 + porcentaje_ganancia)))
-                var checkout = new WidgetCheckout({
-                    currency: 'COP',
-                    amountInCents:  Math.round(price_days) * 100,
-                    reference: 'AD8847745999876',
-                    publicKey: 'pub_test_Zs0LVNeaLOG440kKSAp0YRXBO8M0VBP0',
-                    redirectUrl: 'https://transaction-redirect.wompi.co/check', // Opcional
-                    taxInCents: { // Opcional
-                     vat: 1900,
-                     consumption: 800
-                    },
-                    customerData: { // Opcional
-                     email:'{{request.session.email_user}}',
-                     fullName: '{{resident.name}}',
-                     phoneNumber: '{{resident.phone}}',
-                     phoneNumberPrefix: '+57',
-                    },
-                    shippingAddress: { // Opcional
-                     addressLine1: "Calle 123 # 4-5",
-                     city: "Bogota",
-                     phoneNumber: '3019444444',
-                     region: "Cundinamarca",
-                     country: "CO"
+                obj = {
+                    price: Math.round(price_days / (1 + porcentaje_ganancia)),
+                    date: $(".date").val(),
+                    hour:$("#lunchBegins").val(),
+                    persons: $("#quantity").val(),
+                    client: '{{request.session.email_user}}',
+                    phone:'{{request.session.phone}}',
+                    property:'{{op.pk}}',
+                    note:$(".note").val(),
+                    days : days,
+                    feed_clean: tarifa_limpieza,
+                    pk_user :'{{op.agent_pk}}',
+                    name_user : '{{resindet.name}}'
+                }
+                $.ajax({
+                    url:"{% url 'Create_Reservation' %}",
+                    data:obj,
+                    success: function(data){
+                        $.gritter.add({
+                            title: 'EXITO',
+                            text: "Reservacion realiada con exito"
+                        }); 
                     }
                 })
-                checkout.open(function ( result ) {
-                    var transaction = result.transaction
-                    console.log('Transaction ID: ', transaction.id)
-                    console.log('Transaction object: ', transaction)
-                    if(transaction.status == "APPROVED"){
-                        obj = {
-                            price: Math.round(price_days / (1 + porcentaje_ganancia)),
-                            date: $(".date").val(),
-                            hour:$("#lunchBegins").val(),
-                            persons: $("#quantity").val(),
-                            client: '{{request.session.email_user}}',
-                            phone:'{{request.session.phone}}',
-                            property:'{{op.pk}}',
-                            note:$(".note").val(),
-                            days : days,
-                            feed_clean: tarifa_limpieza,
-                            pk_user :'{{op.agent_pk}}',
-                            name_user : '{{resindet.name}}'
-                        }
-                        $.ajax({
-                            url:"{% url 'Create_Reservation' %}",
-                            data:obj,
-                            success: function(data){
+                $(".reserved").hide()
+                // console.log((price_days / (1 + porcentaje_ganancia)))
+                // var checkout = new WidgetCheckout({
+                //     currency: 'COP',
+                //     amountInCents:  Math.round(price_days) * 100,
+                //     reference: 'AD8847745999876',
+                //     publicKey: 'pub_test_Zs0LVNeaLOG440kKSAp0YRXBO8M0VBP0',
+                //     redirectUrl: 'https://transaction-redirect.wompi.co/check', // Opcional
+                //     taxInCents: { // Opcional
+                //      vat: 1900,
+                //      consumption: 800
+                //     },
+                //     customerData: { // Opcional
+                //      email:'{{request.session.email_user}}',
+                //      fullName: '{{resident.name}}',
+                //      phoneNumber: '{{resident.phone}}',
+                //      phoneNumberPrefix: '+57',
+                //     },
+                //     shippingAddress: { // Opcional
+                //      addressLine1: "Calle 123 # 4-5",
+                //      city: "Bogota",
+                //      phoneNumber: '3019444444',
+                //      region: "Cundinamarca",
+                //      country: "CO"
+                //     }
+                // })
+                // checkout.open(function ( result ) {
+                //     var transaction = result.transaction
+                //     console.log('Transaction ID: ', transaction.id)
+                //     console.log('Transaction object: ', transaction)
+                //     if(transaction.status == "APPROVED"){
+                //         obj = {
+                //             price: Math.round(price_days / (1 + porcentaje_ganancia)),
+                //             date: $(".date").val(),
+                //             hour:$("#lunchBegins").val(),
+                //             persons: $("#quantity").val(),
+                //             client: '{{request.session.email_user}}',
+                //             phone:'{{request.session.phone}}',
+                //             property:'{{op.pk}}',
+                //             note:$(".note").val(),
+                //             days : days,
+                //             feed_clean: tarifa_limpieza,
+                //             pk_user :'{{op.agent_pk}}',
+                //             name_user : '{{resindet.name}}'
+                //         }
+                //         $.ajax({
+                //             url:"{% url 'Create_Reservation' %}",
+                //             data:obj,
+                //             success: function(data){
 
-                            }
-                        })
-                    }
+                //             }
+                //         })
+                //     }
 
-                })
-
-                // obj = {
-                //     price: Math.round(price_days / (1 + porcentaje_ganancia)),
-                //     date: $(".date").val(),
-                //     hour:$("#lunchBegins").val(),
-                //     persons: $("#quantity").val(),
-                //     client: '{{request.session.email_user}}',
-                //     phone:'{{request.session.phone}}',
-                //     property:'{{op.pk}}',
-                //     note:$(".note").val(),
-                //     days : days,
-                //     feed_clean: tarifa_limpieza
-                // }
-               
-
-
-
-
-                
+                // })
             })
 
 
